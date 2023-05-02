@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import { Injectable } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
@@ -15,9 +15,20 @@ import { AddTeacherComponent } from './components/add-teacher/add-teacher.compon
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from "@angular/common/http";
+import { HttpClientModule, HTTP_INTERCEPTORS, HttpInterceptor, HttpRequest, HttpHandler } from "@angular/common/http";
 import { CourseInfoComponent } from './components/course-info/course-info.component';
 import { TeacherInfoComponent } from './components/teacher-info/teacher-info.component';
+
+
+@Injectable()
+export class CorsInterceptor implements HttpInterceptor {
+  intercept(req: HttpRequest<any>, next: HttpHandler) {
+    const corsReq = req.clone({
+      headers: req.headers.set('Access-Control-Allow-Origin', '*')
+    });
+    return next.handle(corsReq);
+  }
+}
 
 @NgModule({
   declarations: [
@@ -44,7 +55,14 @@ import { TeacherInfoComponent } from './components/teacher-info/teacher-info.com
     ReactiveFormsModule,
     HttpClientModule,
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: CorsInterceptor,
+      multi:true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+

@@ -2,9 +2,13 @@
 
             <div class="team_item">
                 <div class="team_image"><img src="assets/images/team_1.jpg" alt=""></div>
+
                 <div class="team_body">
-                    <div class="team_title"><a href="teacherInfo">Jacke Masito</a></div>
-                    <div class="team_subtitle">Marketing & Management</div>
+                    <div class="team_title"><a href="teacherInfo">{{teacherInput.name}}</a></div>
+                    <div class="team_subtitle">{{teacherInput.speciality}}</div>
+                    <button class="btn btn-space" >Display</button>
+                    <button class="btn btn-space">Edit</button>
+                    <button class="btn btn-danger" (click)="deleteAndReloadTeachers(teacherInput.id)">Delete</button>
                     <div class="social_list">
                         <ul>
                             <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>

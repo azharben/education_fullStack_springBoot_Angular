@@ -1,4 +1,4 @@
-import { Component,Input, OnInit } from '@angular/core';
+import { Component,Input,EventEmitter, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { CourseService } from 'src/app/services/course.service';
 
@@ -9,17 +9,30 @@ import { CourseService } from 'src/app/services/course.service';
 })
 export class CourseComponent implements OnInit {
   @Input() courseInput: any;
-  course: any={id: 1, title: "Angular", price : 500 , nbrePlaces: "12", description: "Framework Angular"};
+  @Output() courseDeleted = new EventEmitter<CourseComponent>();
+  coursesTab: any=[];
+  newCoursesTab:any=[];
+  //course: any={id: 1, title: "Angular", price : 500 , nbrePlaces: "12", description: "Framework Angular"};
   constructor(private courseService: CourseService,
-    private router : Router) { }
+    private router : Router ) { }
 
   ngOnInit() {
-   
   }
 
-  deleteMatch(id){
-    this.courseService.deleteCourse(id).subscribe();
+  deleteAndReloadCourses(id){
+    console.log("id course",this.courseInput.id );
+
+    this.courseService.deleteCourse(id).subscribe(
+      data => {
+        console.log("Course deleted");
+
+        this.courseDeleted.emit(this.courseInput); // émettre l'événement
+      }
+    );
   }
+  
+
+    
   // goToDisplay(id){
   //   this.router.navigate([`courses/courseInfo/${id}`]);
   // }

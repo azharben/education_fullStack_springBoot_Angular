@@ -16,7 +16,7 @@ export class LoginComponent implements OnInit {
       // lastName:["", [Validators.required, Validators.minLength(5)]],
       email:["", [Validators.required, Validators.email]],
       password:["", [Validators.required, Validators.minLength(6), Validators.maxLength(12)]],
-      confirmPassword:[""],
+      // confirmPassword:[""],
     })
   }
   signup(){

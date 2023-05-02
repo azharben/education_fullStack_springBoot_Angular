@@ -12,28 +12,14 @@
               </div>
           </div>
       </div>
-      <div class="row team_row">
+      
           
-
           <!-- Team Item -->
-          <div class="col-lg-3 col-md-6 team_col">
-            <app-teacher></app-teacher>
+          <div class="row teachers_row d-flex flex-row">
+            <div *ngFor="let teacher of teachersTab" class="col-lg-4 teacher_col">
+              <app-teacher [teacherInput]="teacher" (teacherDeleted)="deleteTeacher($event)"></app-teacher>
           </div>
-            <!-- Team Item -->
-            <div class="col-lg-3 col-md-6 team_col">
-                <app-teacher></app-teacher>
-            </div>
-           <!-- Team Item -->
-          <div class="col-lg-3 col-md-6 team_col">
-            <app-teacher></app-teacher>
-          </div>
-            <!-- Team Item -->
-            <div class="col-lg-3 col-md-6 team_col">
-            <app-teacher></app-teacher>
-            </div>
-
-
-
-      </div>
+            
+      
   </div>
 </div>

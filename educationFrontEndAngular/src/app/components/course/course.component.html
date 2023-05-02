@@ -6,12 +6,12 @@
                         <h3 class="course_title"><a routerLink="courseInfo">{{courseInput.title}}</a></h3>
                         <div class="course_teacher">Mr. John Taylor</div>
                         <div class="course_text">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipi elitsed do eiusmod tempor</p>
+                            <p>{{courseInput.description}}</p>
                         </div>
                     </div>
                     <button class="btn btn-space" routerLink="courseInfo">Display</button>
-                    <button class="btn btn-space">Edit</button>
-                    <button class="btn btn-danger">Delete</button>
+                    <button class="btn btn-space" >Edit</button>
+                    <button class="btn btn-danger" (click)="deleteAndReloadCourses(courseInput.id)">Delete</button>
                     <div class="course_footer">
                         <div class="course_footer_content d-flex flex-row align-items-center justify-content-start">
                             <div class="course_info">

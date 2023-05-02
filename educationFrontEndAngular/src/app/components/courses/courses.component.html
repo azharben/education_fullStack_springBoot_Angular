@@ -14,7 +14,7 @@
         </div>
         <div class="row courses_row d-flex flex-row">
             <div *ngFor="let course of coursesTab" class="col-lg-4 course_col">
-                <app-course [courseInput]="course"></app-course>
+                <app-course [courseInput]="course" (courseDeleted)="deleteCourse($event)"></app-course>
             </div>
         </div>
 

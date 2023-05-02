@@ -18,7 +18,7 @@ export class TeacherService {
   }
   
   // Response (Array of object)
-  getAllteacheres(){
+  getAllteachers(){
     return this.httpClient.get(this.backteacherUrl);
   }
 
