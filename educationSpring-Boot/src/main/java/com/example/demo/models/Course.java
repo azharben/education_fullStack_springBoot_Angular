@@ -6,7 +6,8 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.ManyToOne;
+
 import jakarta.persistence.Table;
 
 
@@ -20,27 +21,34 @@ public class Course {
 	private Long id;
 	private String title;
 	private String price;
-	private int nbrePlaces;
+	private String nbrPlaces;
 	private String description; 
+	private Long teacherId;
 	
-	
-	
-	  @OneToMany
-	  
-	  @JoinColumn(name = "TEACHER_ID", nullable = true) private Long techerId;
-	  public void setTecherId(Long techerId) { this.techerId = techerId; } public
-	  Long getTecherId() { return techerId; }
+	/*
+	 * @ManyToOne(targetEntity = Teacher.class)
+	 * 
+	 * @JoinColumn(name = "TEACHER_ID", nullable = true) private Long teacherId;
+	 * 
+	 * */
+	 public void setTeacherId(Long teacherId) { this.teacherId = teacherId; }
+	 
+
+	public Long getTeacherId() {
+		return teacherId;
+	}
 	 
 	public Course() {
 	
 		// TODO Auto-generated constructor stub
 	}
-	public Course(String title, String description, String price, int nbrePlaces) {
+	public Course(String title, String description, String price, String nbrPlaces, Long teacherId) {
 		
 		this.title = title;
 		this.description = description;
 		this.price = price;
-		this.nbrePlaces = nbrePlaces;
+		this.nbrPlaces = nbrPlaces;
+		this.teacherId=teacherId;
 	}
 	
 	public Long getId() {
@@ -67,16 +75,18 @@ public class Course {
 	public void setPrice(String price) {
 		this.price = price;
 	}
-	public int getNbrPlace() {
-		return nbrePlaces;
+	public String getNbrPlaces() {
+		return nbrPlaces;
 	}
-	public void setNbrPlace(int nbrePlaces) {
-		this.nbrePlaces = nbrePlaces;
+	public void setNbrPlaces(String nbrPlaces) {
+		this.nbrPlaces = nbrPlaces;
 	}
+
+
 	@Override
 	public String toString() {
-		return "Cours [title=" + title + ", description=" + description + ", price=" + price + ", nbrePlaces=" + nbrePlaces
-				+ "]";
+		return "Course [id=" + id + ", title=" + title + ", price=" + price + ", nbrPlaces=" + nbrPlaces
+				+ ", description=" + description + ", teacherId=" + teacherId + "]";
 	}
 	
 	

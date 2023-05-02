@@ -54,12 +54,11 @@ public class CourseController {
 
 	@GetMapping
 	public List<Course> getAllCourses() {
-
 		return coursService.getAllCourses();
 	}
 
 	@PostMapping("/{id}")
-	public Course kharya	(Course c) {
+	public Course editCours	(Course c) {
 
 		return coursService.editCours(c);
 	}

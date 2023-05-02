@@ -13,22 +13,23 @@ public class Teacher {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "TEACHER_ID")
-	private Long id;
+	private Long id; 
 	private String name;
-	private String specialty;
-	private String expreience;
+	@Column(name = "SPECIALITY")
+	private String speciality;
+	private String experience;
 	private String email;
 	
 	public Teacher() {
 		
 		// TODO Auto-generated constructor stub
 	}
-	public Teacher(String name, String specialty, String expreience, String email) {
+	public Teacher(String name, String speciality, String expreience, String email) {
 		
 		this.id = id;
 		this.name = name;
-		this.specialty = specialty;
-		this.expreience = expreience;
+		this.speciality = speciality;
+		this.experience = experience;
 		this.email = email;
 	}
 	
@@ -45,17 +46,17 @@ public class Teacher {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getSpecialty() {
-		return specialty;
+	public String getSpeciality() {
+		return speciality;
 	}
-	public void setSpecialty(String specialty) {
-		this.specialty = specialty;
+	public void setSpeciality(String speciality) {
+		this.speciality = speciality;
 	}
-	public String getExpreience() {
-		return expreience;
+	public String getExperience() {
+		return experience;
 	}
-	public void setExpreience(String expreience) {
-		this.expreience = expreience;
+	public void setExperience(String experience) {
+		this.experience = experience;
 	}
 	public String getEmail() {
 		return email;
@@ -65,7 +66,7 @@ public class Teacher {
 	}
 	@Override
 	public String toString() {
-		return "Teacher [id=" + id + ", name=" + name + ", specialty=" + specialty + ", expreience=" + expreience
+		return "Teacher [id=" + id + ", name=" + name + ", speciality=" + speciality + ", experience=" + experience
 				+ ", email=" + email + "]";
 	}
 

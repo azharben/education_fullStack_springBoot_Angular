@@ -24,24 +24,24 @@ public class TeacherControllers {
 	private  TeacherService teacherService;
 	
 	@PostMapping
-	public Teacher addCours(@RequestBody Teacher t) {	
+	public Teacher addTeacher(@RequestBody Teacher t) {	
 		return teacherService.addTeacher(t);
 	}
 
 	@GetMapping("/{id}")
-	public Teacher getCoursById(@PathVariable Long id) {	
+	public Teacher getTeacherById(@PathVariable Long id) {	
 		return  teacherService.getTeacherById(id);
 	}
 
 	@DeleteMapping("/{id}")
-	public void deleteCoursById(@PathVariable Long id) {
+	public void deleteTeacherById(@PathVariable Long id) {
 
 		teacherService.deleteTeacherById(id);
 		
 	}
 
 	@GetMapping
-	public List<Teacher> getAllCourses() {
+	public List<Teacher> getAllTeachers() {
 
 		return teacherService.getAllTeachers();
 	}
