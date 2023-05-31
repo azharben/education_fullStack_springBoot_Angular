@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.demo.dtos.CourseDto;
 import com.example.demo.models.Course;
 import com.example.demo.services.CoursService;
 
@@ -29,6 +30,11 @@ public class CourseController {
 	@Autowired
 	private  CoursService coursService;
 	
+	@Autowired
+	private org.modelmapper.ModelMapper modelMapper;
+	
+	CourseDto courseDto = new CourseDto();
+	
 	/*
 	 * @PostMapping public ResponseEntity<Course> addCours(@RequestBody Course c) {
 	 * System.out.println("Received course: " + c); Course newCourse =
@@ -41,7 +47,7 @@ public class CourseController {
 	}
 	@GetMapping("/{id}")
 	public Course getCoursById(@PathVariable Long id) {
-		
+
 		return  coursService.getCoursById(id);
 	}
 
@@ -51,9 +57,11 @@ public class CourseController {
 		 coursService.deleteCoursById(id);
 		
 	}
+	
 
 	@GetMapping
 	public List<Course> getAllCourses() {
+		modelMapper.map(courseDto, Course.class);
 		return coursService.getAllCourses();
 	}
 

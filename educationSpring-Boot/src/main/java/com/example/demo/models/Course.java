@@ -22,8 +22,9 @@ public class Course {
 	private String title;
 	private String price;
 	private String nbrPlaces;
-	private String description; 
+	
 	private Long teacherId;
+	private String description; 
 	
 	/*
 	 * @ManyToOne(targetEntity = Teacher.class)
