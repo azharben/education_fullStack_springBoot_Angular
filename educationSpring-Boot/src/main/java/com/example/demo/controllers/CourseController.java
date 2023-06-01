@@ -30,8 +30,8 @@ public class CourseController {
 	@Autowired
 	private  CoursService coursService;
 	
-	@Autowired
-	private org.modelmapper.ModelMapper modelMapper;
+	//@Autowired
+	//private org.modelmapper.ModelMapper modelMapper;
 	
 	CourseDto courseDto = new CourseDto();
 	
@@ -61,7 +61,7 @@ public class CourseController {
 
 	@GetMapping
 	public List<Course> getAllCourses() {
-		modelMapper.map(courseDto, Course.class);
+		//modelMapper.map(courseDto, Course.class);
 		return coursService.getAllCourses();
 	}
 
